@@ -44,6 +44,7 @@ local options = {
     open_file = {
       resize_window = true,
     },
+       
   },
   renderer = {
     -- root_folder_label = false,

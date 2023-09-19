@@ -1,8 +1,6 @@
 -- set leader key to space
-vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
-
 ---------------------
 -- General Keymaps -------------------
 
@@ -12,6 +10,8 @@ local M = {}
 M.general = {
   plugins = true,
   i = {
+
+    
     -- go to  beginning and end
     ["<C-b>"] = { "<ESC>^i", "Beginning of line" },
     ["<C-e>"] = { "<End>", "End of line" },
@@ -26,10 +26,10 @@ M.general = {
   n = {
     ["<Esc>"] = { ":noh <CR>", "Clear highlights" },
     -- switch between windows
-    ["<C-h>"] = { "<C-w>h", "Window left" },
-    ["<C-l>"] = { "<C-w>l", "Window right" },
-    ["<C-j>"] = { "<C-w>j", "Window down" },
-    ["<C-k>"] = { "<C-w>k", "Window up" },
+    -- ["<C-h>"] = { "<C-w>h", "Window left" },
+    -- ["<C-l>"] = { "<C-w>l", "Window right" },
+    -- ["<C-j>"] = { "<C-w>j", "Window down" },
+    -- ["<C-k>"] = { "<C-w>k", "Window up" },
 
     -- save
     ["<leader>w"] = { "<cmd> w <CR>", "Save" },
@@ -229,21 +229,21 @@ M.lspconfig = {
       "Diagnostic setloclist",
     },
 
-    ["<leader>wa"] = {
+    ["<leader>lc"] = {
       function()
         vim.lsp.buf.add_workspace_folder()
       end,
       "Add workspace folder",
     },
 
-    ["<leader>wr"] = {
+    ["<leader>lr"] = {
       function()
         vim.lsp.buf.remove_workspace_folder()
       end,
       "Remove workspace folder",
     },
 
-    ["<leader>wl"] = {
+    ["<leader>ll"] = {
       function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end,
@@ -252,7 +252,7 @@ M.lspconfig = {
   },
 
   v = {
-    ["<leader>ca"] = {
+    ["<leader>la"] = {
       function()
         vim.lsp.buf.code_action()
       end,
