@@ -6,7 +6,6 @@ return {
     { "antosha417/nvim-lsp-file-operations", config = true },
   },
   config = function()
-
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
@@ -71,8 +70,8 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-
-   local lua_ls_options = {settings = { -- custom settings for lua
+    local lua_ls_options = {
+      settings = { -- custom settings for lua
         Lua = {
           -- make the language server recognize "vim" global
           diagnostics = {
@@ -86,9 +85,11 @@ return {
             },
           },
         },
-      }}
+      },
+    }
 
-    local svelte_options = {      on_attach = function(client, bufnr)
+    local svelte_options = {
+      on_attach = function(client, bufnr)
         on_attach(client, bufnr)
 
         vim.api.nvim_create_autocmd("BufWritePost", {
@@ -99,7 +100,8 @@ return {
             end
           end,
         })
-      end}
+      end,
+    }
 
     local graphql_options = {
 
@@ -107,23 +109,34 @@ return {
     }
 
     local emmet_ls_options = {
-filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" }
+      filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
     }
 
-local servers = {rust_analyzer={},emmet_ls=emmet_ls_options, html={}, cssls={}, clangd={},tailwindcss={},prismals={},pyright={},tsserver={},lua_ls=lua_ls_options,svelte=svelte_options,graphql=graphql_options}
+    local servers = {
+      vuels = {},
+      texlab = {},
+      emmet_ls = emmet_ls_options,
+      html = {},
+      cssls = {},
+      clangd = {},
+      tailwindcss = { filetypes = { "html", "typescriptreact", "vue" } },
+      prismals = {},
+      pyright = {},
+      tsserver = {},
+      lua_ls = lua_ls_options,
+      svelte = svelte_options,
+      graphql = graphql_options,
+    }
 
-for lsp in pairs(servers) do
-
-if(servers[lsp].capabilities == nil) then
-
-      servers[lsp].capabilities = capabilities
+    for lsp in pairs(servers) do
+      if servers[lsp].capabilities == nil then
+        servers[lsp].capabilities = capabilities
       end
-      if(servers[lsp].on_attach == nil) then
-      servers[lsp].on_attach = on_attach
+      if servers[lsp].on_attach == nil then
+        servers[lsp].on_attach = on_attach
       end
 
-  lspconfig[lsp].setup(servers[lsp])
-end
-
+      lspconfig[lsp].setup(servers[lsp])
+    end
   end,
 }

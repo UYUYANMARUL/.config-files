@@ -2,7 +2,7 @@ return {
   "williamboman/mason.nvim",
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
-"jayp0521/mason-null-ls.nvim",
+    "jayp0521/mason-null-ls.nvim",
   },
   config = function()
     -- import mason
@@ -28,6 +28,7 @@ return {
     mason_lspconfig.setup({
       -- list of servers for mason to install
       ensure_installed = {
+        "rust_analyzer",
         "tsserver",
         "html",
         "cssls",
@@ -38,17 +39,23 @@ return {
         "emmet_ls",
         "prismals",
         "pyright",
+        "texlab",
+        "vuels",
+      },
+      autotag = {
+        enable = true,
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true, -- not the same as ensure_installed
     })
 
- mason_null_ls.setup({
+    mason_null_ls.setup({
       -- list of formatters & linters for mason to install
       ensure_installed = {
         "prettier", -- ts/js formatter
         "stylua", -- lua formatter
         "eslint_d", -- ts/js linter
+        "rustfmt",
       },
       -- auto-install configured servers (with lspconfig)
       automatic_installation = true,
