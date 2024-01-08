@@ -523,10 +523,14 @@ M.floatterminal = {
   n = {
 
     ["<C-\\>"] = { "<cmd> FloatermToggle <CR>", "Open Floaterminal" },
+
+    ["<C-z>"] = { "<cmd> FloatermToggle <CR>", "Open Floaterminal" },
   },
   t = {
 
     ["<C-\\>"] = { "<cmd> FloatermToggle <CR>", "Open Floaterminal" },
+
+    ["<C-z>"] = { "<cmd> FloatermToggle <CR>", "Open Floaterminal" },
   },
 }
 

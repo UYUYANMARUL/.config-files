@@ -2,6 +2,14 @@
 --
 vim.keymap.set("n", "<c-z>", "<nop>")
 vim.g.mapleader = " "
+
+local vim = vim
+local opt = vim.opt
+
+vim.opt.foldlevel = 999
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+
 require("lazyy")
 require("core")
 require("whichkey")

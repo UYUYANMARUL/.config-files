@@ -41,6 +41,8 @@ return {
         "pyright",
         "texlab",
         "vuels",
+        "csharp_ls",
+        "jdtls",
       },
       autotag = {
         enable = true,

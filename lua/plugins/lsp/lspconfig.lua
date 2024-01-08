@@ -126,6 +126,8 @@ return {
       lua_ls = lua_ls_options,
       svelte = svelte_options,
       graphql = graphql_options,
+      csharp_ls = {},
+      jdtls = {},
     }
 
     for lsp in pairs(servers) do
