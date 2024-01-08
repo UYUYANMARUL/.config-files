@@ -6,9 +6,14 @@ vim.g.mapleader = " "
 local vim = vim
 local opt = vim.opt
 
+--
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldtext = [[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
+vim.opt.fillchars = "fold:."
+vim.opt.foldnestmax = 3
+vim.opt.foldminlines = 1
 vim.opt.foldlevel = 999
-vim.wo.foldmethod = "expr"
-vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
 
 require("lazyy")
 require("core")
